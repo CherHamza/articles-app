@@ -10,17 +10,9 @@ services:
       MYSQL_DATABASE: articles_db
       MYSQL_USER: articles_user
       MYSQL_PASSWORD: articles_password
-
   articles-back:
     build: ./articles-back
     ports:
       - "8080:8080"
     depends_on:
       - articles-db
-
-  articles-front:
-    build: ./articles-front
-    ports:
-      - "3000:3000"
-    depends_on:
-      - articles-back
