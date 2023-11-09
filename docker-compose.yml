@@ -1,3 +1,4 @@
+# articles-app/docker-compose.yml
 version: '3.8'
 
 services:
@@ -10,6 +11,8 @@ services:
       MYSQL_DATABASE: articles_db
       MYSQL_USER: articles_user
       MYSQL_PASSWORD: articles_password
+    networks:
+      - articles-network
 
   articles-back:
     build: ./articles-back
@@ -17,6 +20,8 @@ services:
       - "8080:8080"
     depends_on:
       - articles-db
+    networks:
+      - articles-network
 
   articles-front:
     build: ./articles-front
@@ -24,3 +29,8 @@ services:
       - "3000:3000"
     depends_on:
       - articles-back
+    networks:
+      - articles-network
+
+networks:
+  articles-network:
