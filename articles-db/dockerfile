@@ -1,0 +1,11 @@
+# articles-db/Dockerfile
+FROM mysql:latest
+
+ENV MYSQL_ROOT_PASSWORD=root
+ENV MYSQL_DATABASE=articles_db
+ENV MYSQL_USER=articles_user
+ENV MYSQL_PASSWORD=articles_password
+
+COPY ./init.sql /docker-entrypoint-initdb.d/
+
+EXPOSE 3306

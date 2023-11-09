@@ -1,0 +1,13 @@
+# articles-app/docker-compose.yml
+version: '3.8'
+
+services:
+  articles-db:
+    build: ./articles-db
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: articles_db
+      MYSQL_USER: articles_user
+      MYSQL_PASSWORD: articles_password
